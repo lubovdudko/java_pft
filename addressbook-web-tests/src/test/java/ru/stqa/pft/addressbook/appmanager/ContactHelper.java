@@ -30,16 +30,17 @@ public class ContactHelper extends HelperBase {
     type(By.name("email"), contactData.getEmail());
     if (creation) {
       new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(contactData.getGroup());
-    } else{
+    } else {
       Assert.assertFalse(isElementPresent(By.name("new_group")));
     }
   }
+
   public void initContactCreation() {
     click(By.linkText("add new"));
   }
 
   public void selectContact() {
-        click(By.name("selected[]"));
+    click(By.name("selected[]"));
   }
 
   public void deleteSelectedContacts() {
@@ -53,5 +54,16 @@ public class ContactHelper extends HelperBase {
 
   public void submitContactModification() {
     click(By.name("update"));
+  }
+
+  public void createContact(ContactData contact, boolean b) {
+    initContactCreation();
+    fillContactForm(contact, b);
+    submitContactCreation();
+    returnToHomePage();
+  }
+
+  public boolean isThereAContact() {
+    return isElementPresent(By.name("selected[]"));
   }
 }
