@@ -77,16 +77,6 @@ public class ContactData {
   public ContactData withAllPhones(String allPhones) { this.allPhones = allPhones; return this;}
 
 
-
-  @Override
-  public String toString() {
-    return "ContactData{" +
-            "id=" + id +
-            ", firstname='" + firstname + '\'' +
-            ", lastname='" + lastname + '\'' +
-            '}';
-  }
-
   @Override
   public boolean equals(Object o) {
     if (this == o) return true;
@@ -102,4 +92,14 @@ public class ContactData {
 
     return Objects.hash(id, firstname, lastname);
   }
+
+  @Override
+  public String toString() {
+    return "ContactData{" +
+            "id=" + id +
+            ", firstname='" + firstname + '\'' +
+            ", lastname='" + lastname + '\'' +
+            '}';
+  }
+
 }
