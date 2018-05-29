@@ -20,8 +20,8 @@ public class ContactCreationTests extends TestBase {
     List<Object[]> list = new ArrayList<Object[]>();
     File photo = new File("src/test/resources/Contacts.png");
     list.add(new Object[] {new ContactData().withFirstname("abs1").withLastname("new1").withTitle("title").withAddress("address").withHomePhone("123456").withMobilePhone("45675").withWorkPhone("099988").withEmail("abcde@gmail.com").withGroup("test1").withPhoto(photo)});
-    list.add(new Object[] {new ContactData().withFirstname("abs2").withLastname("new2").withTitle("title").withAddress("address").withHomePhone("123456").withMobilePhone("45675").withWorkPhone("099988").withEmail("abcde@gmail.com").withGroup("test1").withPhoto(photo)});
-    list.add(new Object[] {new ContactData().withFirstname("abs3").withLastname("new3").withTitle("title").withAddress("address").withHomePhone("123456").withMobilePhone("45675").withWorkPhone("099988").withEmail("abcde@gmail.com").withGroup("test1").withPhoto(photo)});
+    list.add(new Object[] {new ContactData().withFirstname("abs2").withLastname("new2").withTitle("title").withAddress("address").withHomePhone("123456").withMobilePhone("45675").withWorkPhone("099988").withEmail("abcde@gmail.com").withGroup("test2").withPhoto(photo)});
+    list.add(new Object[] {new ContactData().withFirstname("abs3").withLastname("new3").withTitle("title").withAddress("address").withHomePhone("123456").withMobilePhone("45675").withWorkPhone("099988").withEmail("abcde@gmail.com").withGroup("test3").withPhoto(photo)});
     return list.iterator();
   }
 
