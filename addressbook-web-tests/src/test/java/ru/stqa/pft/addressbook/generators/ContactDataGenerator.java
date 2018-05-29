@@ -4,7 +4,6 @@ import com.beust.jcommander.JCommander;
 import com.beust.jcommander.Parameter;
 import com.beust.jcommander.ParameterException;
 import ru.stqa.pft.addressbook.model.ContactData;
-import ru.stqa.pft.addressbook.model.GroupData;
 
 import java.io.File;
 import java.io.FileWriter;
@@ -43,7 +42,7 @@ public class ContactDataGenerator {
     Writer writer = new FileWriter(file);
     for (ContactData contact : contacts){
       writer.write(String.format("%s;%s;%s;%s;%s;%s;%s;%s;%s;%s\n", contact.getFirstname(), contact.getLastname(),contact.getTitle(),
-              contact.getAddress(), contact.getHomePhone(), contact.getMobilePhone(),contact.getWorkPhone(), contact.getEmail(),contact.getAddress(),contact.getGroup()));
+              contact.getAddress(), contact.getHomePhone(), contact.getMobilePhone(),contact.getWorkPhone(), contact.getEmail(),contact.getAddress(),contact.getGroup(), contact.getPhoto()));
     }
     writer.close();
   }
