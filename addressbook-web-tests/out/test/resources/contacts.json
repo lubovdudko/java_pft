@@ -1,6 +1,5 @@
 [
   {
-    "id": 2147483647,
     "firstname": "firstName 0",
     "lastname": "lastName 0",
     "title": "title 0",
@@ -10,12 +9,9 @@
     "workphone": "+375291533420",
     "email": "abc0@gmail.com",
     "group": "test0",
-    "photo": {
-      "path": "src\\test\\resources\\Contacts.png"
-    }
+    "photo": {}
   },
   {
-    "id": 2147483647,
     "firstname": "firstName 1",
     "lastname": "lastName 1",
     "title": "title 1",
@@ -25,12 +21,9 @@
     "workphone": "+375291533421",
     "email": "abc1@gmail.com",
     "group": "test1",
-    "photo": {
-      "path": "src\\test\\resources\\Contacts.png"
-    }
+    "photo": {}
   },
   {
-    "id": 2147483647,
     "firstname": "firstName 2",
     "lastname": "lastName 2",
     "title": "title 2",
@@ -40,8 +33,6 @@
     "workphone": "+375291533422",
     "email": "abc2@gmail.com",
     "group": "test2",
-    "photo": {
-      "path": "src\\test\\resources\\Contacts.png"
-    }
+    "photo": {}
   }
 ]
