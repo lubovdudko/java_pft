@@ -8,6 +8,8 @@
     "mobilephone": "22 2223 44 0",
     "workphone": "+375291533420",
     "email1": "abc0@gmail.com",
+    "email2": "0abc@gmail.com",
+    "email3": "a0bc@gmail.com",
     "group": "test0"
   },
   {
@@ -19,6 +21,8 @@
     "mobilephone": "22 2223 44 1",
     "workphone": "+375291533421",
     "email1": "abc1@gmail.com",
+    "email2": "1abc@gmail.com",
+    "email3": "a1bc@gmail.com",
     "group": "test1"
   },
   {
@@ -30,6 +34,8 @@
     "mobilephone": "22 2223 44 2",
     "workphone": "+375291533422",
     "email1": "abc2@gmail.com",
+    "email2": "2abc@gmail.com",
+    "email3": "a2bc@gmail.com",
     "group": "test2"
   }
 ]
