@@ -7,9 +7,8 @@
     "homephone": "123456 0",
     "mobilephone": "22 2223 44 0",
     "workphone": "+375291533420",
-    "email": "abc0@gmail.com",
-    "group": "test0",
-    "photo": {}
+    "email1": "abc0@gmail.com",
+    "group": "test0"
   },
   {
     "firstname": "firstName 1",
@@ -19,9 +18,8 @@
     "homephone": "123456 1",
     "mobilephone": "22 2223 44 1",
     "workphone": "+375291533421",
-    "email": "abc1@gmail.com",
-    "group": "test1",
-    "photo": {}
+    "email1": "abc1@gmail.com",
+    "group": "test1"
   },
   {
     "firstname": "firstName 2",
@@ -31,8 +29,7 @@
     "homephone": "123456 2",
     "mobilephone": "22 2223 44 2",
     "workphone": "+375291533422",
-    "email": "abc2@gmail.com",
-    "group": "test2",
-    "photo": {}
+    "email1": "abc2@gmail.com",
+    "group": "test2"
   }
 ]
