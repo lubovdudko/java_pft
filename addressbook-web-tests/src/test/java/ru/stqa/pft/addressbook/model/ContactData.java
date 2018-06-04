@@ -7,7 +7,9 @@ import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
 import java.io.File;
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
 @XStreamAlias("contact")
 @Entity
@@ -61,15 +63,15 @@ public class ContactData {
   @Transient
   private String allEmails;
   @Expose
-  @Transient
-  private String group;
-  @Expose
   @Column(name="photo")
   @Type(type = "text")
   private String photo;
 
-  public ContactData() {
-  }
+  @ManyToMany (fetch = FetchType.EAGER)
+  @JoinTable(name="address_in_groups", joinColumns = @JoinColumn(name = "id"), inverseJoinColumns = @JoinColumn(name="group_id"))
+  public Set<GroupData> groups = new HashSet<GroupData>();
+
+  public ContactData() { }
 
   public int getId() { return id; }
 
@@ -119,17 +121,19 @@ public class ContactData {
     return allEmails;
   }
 
-  public String getGroup() { return group; }
-
   public File getPhoto() {
     if (photo == null) {
       return null;
     } else {
       return new File(photo);
     }
-  }
+    }
+
+  public Groups getGroups() { return new Groups(groups); }
 
   public void setId(int id) { this.id = id;}
+
+  public void setGroups(Set<GroupData> groups) { this.groups = groups;}
 
   public ContactData withId(int id) { this.id = id; return this;}
 
@@ -155,11 +159,11 @@ public class ContactData {
 
   public ContactData withAllEmails(String allEmails) { this.allEmails = allEmails; return this;}
 
-  public ContactData withGroup(String group) { this.group = group; return this; }
-
   public ContactData withAllPhones(String allPhones) { this.allPhones = allPhones; return this;}
 
   public ContactData withPhoto(File photo) { this.photo = photo.getPath(); return this; }
+
+  public ContactData withGroup(String group) { this.groups = groups; return this; }
 
 
   @Override
@@ -203,4 +207,8 @@ public class ContactData {
             '}';
   }
 
+  public ContactData inGroup(GroupData group) {
+  groups.add(group);
+  return this;
+  }
 }
