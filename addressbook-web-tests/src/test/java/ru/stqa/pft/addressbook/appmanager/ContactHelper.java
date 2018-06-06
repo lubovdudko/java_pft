@@ -7,6 +7,7 @@ import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import ru.stqa.pft.addressbook.model.ContactData;
 import ru.stqa.pft.addressbook.model.Contacts;
+import ru.stqa.pft.addressbook.model.GroupData;
 
 import java.util.List;
 
@@ -131,5 +132,25 @@ public class ContactHelper extends HelperBase {
     wd.navigate().back();
     return new ContactData().withId(contact.getId()).withFirstname(firstname).withLastname(lastname).withAddress(address).withEmail1(email1)
             .withEmail2(email2).withEmail3(email3).withHomePhone(home).withMobilePhone(mobile).withWorkPhone(work);
+  }
+
+  public void selectGroupToAdd(GroupData group) {
+    new Select(wd.findElement(By.name("to_group"))).selectByVisibleText(group.getName());
+  }
+
+  public void submitContactAdditionToGroup() {
+    click(By.name("add"));
+  }
+
+  public void showContactDetailsById(int id) {
+    wd.findElement(By.xpath("//table[@id='maintable']/tbody/tr/td/input[@value='"+id+"']/../../td[7]/a/img")).click();
+  }
+
+  public boolean isThereAGroup() {
+    return isElementPresent(By.xpath("//div[@id='content']/i[2]"));
+  }
+
+  public boolean isInAGroup(GroupData group) {
+    return isElementPresent(By.xpath("//div[@id='content']//a[.='"+group.getName()+"']"));
   }
 }

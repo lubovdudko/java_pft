@@ -204,6 +204,7 @@ public class ContactData {
             ", email1='" + email1 + '\'' +
             ", email2='" + email2 + '\'' +
             ", email3='" + email3 + '\'' +
+            ", groups=" + groups +
             '}';
   }
 
