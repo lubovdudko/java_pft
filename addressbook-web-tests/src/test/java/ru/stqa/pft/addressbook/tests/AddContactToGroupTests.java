@@ -11,6 +11,7 @@ import ru.stqa.pft.addressbook.model.GroupData;
 import ru.stqa.pft.addressbook.model.Groups;
 
 import java.security.acl.Group;
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -33,30 +34,31 @@ public class AddContactToGroupTests extends TestBase{
   public void testContactAdditionToGroup () {
     Contacts setOfContacts = app.db().contacts();
     Groups setOfGroups = app.db().groups();
+    Set<ContactData> contactsCanBeAddedToGroup = new HashSet<ContactData>();
     int allGroups = setOfGroups.size();
-      ContactData selectedContact = setOfContacts.iterator().next();
-      int contactGroupsTotal = selectedContact.getGroups().size();
+    for (ContactData contact:setOfContacts) {
+      int contactGroupsTotal = contact.getGroups().size();
       if(contactGroupsTotal<allGroups){
-        setOfGroups.removeAll(selectedContact.getGroups());
-      } else if (contactGroupsTotal==allGroups) {
-        selectedContact= setOfContacts.iterator().next();
-        setOfGroups.removeAll(selectedContact.getGroups());
-      } else {
-        app.contact().create(selectedContact = new ContactData().withFirstname("first").withLastname("last").withTitle("title").withAddress("address").withHomePhone("11144")
-                .withMobilePhone("23465").withWorkPhone("0000").withEmail1("abcde@gmail.com").withEmail2("abcde2@gmail.com").withEmail3("abcde3@gmail.com"),true);
+        contactsCanBeAddedToGroup.add(contact);
       }
+    }
+    ContactData selectedContact = new ContactData();
+    if (contactsCanBeAddedToGroup.size()==0) {
+      app.contact().create(new ContactData().withFirstname("first").withLastname("last").withTitle("title").withAddress("address").withHomePhone("11144")
+              .withMobilePhone("23465").withWorkPhone("0000").withEmail1("abcde@gmail.com").withEmail2("abcde2@gmail.com").withEmail3("abcde3@gmail.com"), true);
+      selectedContact.withId(app.db().contacts().stream().max((c1, c2) -> Integer.compare(c1.getId(), c2.getId())).get().getId());
+    } else {selectedContact = contactsCanBeAddedToGroup.iterator().next();}
+
+    setOfGroups.removeAll(selectedContact.getGroups());
+    Groups before = selectedContact.getGroups();
     GroupData selectedGroup = setOfGroups.iterator().next();
     app.contact().selectContactById(selectedContact.getId());
     app.contact().selectGroupToAdd(selectedGroup);
     app.contact().submitContactAdditionToGroup();
-    System.out.println(selectedContact);
-    System.out.println(selectedGroup);
+    Contacts contactsAfter = app.db().contacts();
+    ContactData finalSelectedContact = selectedContact;
+    ContactData contactAddedToGroup = contactsAfter.stream().filter((c)->c.equals(finalSelectedContact)).findFirst().get();
+    Groups after = contactAddedToGroup.getGroups();
+    assertThat(after, equalTo(before.withAdded(selectedGroup)));
     }
-
-/*
-    assertThat(app.contact().count(), equalTo(before.size()));
-    Contacts after= app.db().contacts();
-    assertThat(after, equalTo(before.without(modifiedContact).withAdded(contact)));
-    verifyContactListInUI();*/
-
 }
