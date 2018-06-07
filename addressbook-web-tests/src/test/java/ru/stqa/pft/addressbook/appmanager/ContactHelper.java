@@ -142,15 +142,11 @@ public class ContactHelper extends HelperBase {
     click(By.name("add"));
   }
 
-  public void showContactDetailsById(int id) {
-    wd.findElement(By.xpath("//table[@id='maintable']/tbody/tr/td/input[@value='"+id+"']/../../td[7]/a/img")).click();
+  public void selectGroupToDelete(GroupData group) {
+    new Select(wd.findElement(By.name("group"))).selectByVisibleText(group.getName());
   }
 
-  public boolean isThereAGroup() {
-    return isElementPresent(By.xpath("//div[@id='content']/i[2]"));
-  }
-
-  public boolean isInAGroup(GroupData group) {
-    return isElementPresent(By.xpath("//div[@id='content']//a[.='"+group.getName()+"']"));
+  public void submitContactDeletionFromGroup() {
+    click(By.name("remove"));
   }
 }
